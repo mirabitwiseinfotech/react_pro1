@@ -12,7 +12,7 @@ function App() {
         <div className="fixed flex felx-wrap 
         justify-center bottom-12 inset-x-0 px-2">
           <div className="fixed flex felx-wrap 
-          justify-center gap-3 shadow-lg bg-white 
+          justify-center gap-3 shadow-lg bg-White 
           px-3 py-2 rounded-3xl">
             <button
             onClick={() => setColor("red")}
@@ -28,11 +28,11 @@ function App() {
             style={{backgroundColor: "green"}}
             >Green</button>
             <button
-            onClick={() => setColor("blue")}
+            onClick={() => setColor("Black")}
             className="outline-none px-4 py-1 
-            rounded-full shadow-lg"
-            style={{backgroundColor: "blue"}}
-            >Blue</button>
+            rounded-full shadow-lg  text-white"
+            style={{backgroundColor: "Black"}}
+            >Black</button>
             <button
             onClick={() => setColor("yellow")}
             className="outline-none px-4 py-1 

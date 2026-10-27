@@ -5,13 +5,21 @@ function App() {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charAllowed, setCharAllowed] = useState(false);
+  const [alphabeatsAllow, setAlphabeatsAllowed] = useState(false);
   const [password, setPassword] = useState("");
+ 
+  
 //useRef hook
   const passwordRef= useRef(null)
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "";
+    
+
+    if (alphabeatsAllow) {
+     str += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    }
 
     if (numberAllowed) {
       str += "0123456789";
@@ -34,7 +42,7 @@ function App() {
     }
 
     setPassword(pass);
-  }, [length, numberAllowed, charAllowed, setPassword]);
+  }, [length, numberAllowed, charAllowed,alphabeatsAllow, setPassword]);
   
   const copypasswordToClipboard = useCallback(() => {
     passwordRef.current?.select();
@@ -74,7 +82,7 @@ function App() {
         <input
           type="range"
           min="4"
-          max="30"
+          max="50"
           value={length}
           onChange={(e) => setLength(Number(e.target.value))}
         />
@@ -85,8 +93,8 @@ function App() {
       <div className="flex items-center gap-2 mb-3">
         <input
           type="checkbox"
-          checked={numberAllowed}
-          onChange={() => setNumberAllowed((prev) => !prev)}
+           checked={charAllowed}
+          onChange={() => setCharAllowed((prev) => !prev)}
         />
         <label>Include Numbers</label>
       </div>
@@ -94,12 +102,29 @@ function App() {
       <div className="flex items-center gap-2 mb-4">
         <input
           type="checkbox"
-          checked={charAllowed}
-          onChange={() => setCharAllowed((prev) => !prev)}
+          checked={numberAllowed}
+          onChange={() => setNumberAllowed((prev) => !prev)}
+         
         />
         <label>Include Special Characters</label>
       </div>
 
+       <div className="flex items-center gap-2 mb-4">
+        <input
+          type="checkbox"
+          checked = {numberAllowed && charAllowed && alphabeatsAllow}
+          onChange={(e) => {
+             setNumberAllowed(e.target.checked);
+            setCharAllowed(e.target.checked);
+            setAlphabeatsAllowed(e.target.checked);}}
+         
+        />
+        <label>Include Special Characters & Numbers & Alphabeats</label>
+      </div>
+
+      
+      
+      
       <button
         onClick={passwordGenerator}
         className="w-full bg-orange-500 text-white py-2 rounded-lg mb-4"
