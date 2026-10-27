@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+
 
 function App() {
   const [counter, setCounter] = useState(10)
@@ -11,18 +9,25 @@ function App() {
 
   //let counter = 5
   const addValue = () => {
+    //if(counter < 20){
     //console.log('add value',Math.random())
-    setCounter(counter + 1)
+    // [normal-bunch of state]setCounter(counter + 1)
+    //---callback exception---//
+       setCounter((prevCounter) => prevCounter + 1)
+       setCounter((prevCounter) => prevCounter + 1)
+       setCounter((prevCounter) => prevCounter + 1)
+    //}
     
   }
 
 
   const removeValue = () => {
-    setCounter(counter - 1)
-
+    if(counter > 0){
+      setCounter(counter - 1)
+    }
   }
 
-  return (
+return (
     <>
       
       <h1>My App! welcome</h1>
