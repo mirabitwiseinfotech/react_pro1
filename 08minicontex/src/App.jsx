@@ -1,19 +1,21 @@
 
-import './App.css'
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+import Signup from './components/Signup'
 import Login from './components/Login'
-import Profile from './components/Profile'
-import UserContexProvider from './context/UserContextprovider'
+import Home from './components/Home'
 
 function App() {
-  
-
-  return (
-    <UserContexProvider>
-      <h1>React with Chai and share is important</h1>
-      <Login />
-      <Profile />
-    </UserContexProvider>
-  )
+    return (
+        <Routes>
+            <Route path="/" element={<Navigate to="/signup" replace />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<Navigate to="/signup" replace />} />
+        </Routes>
+    )
 }
 
 export default App
