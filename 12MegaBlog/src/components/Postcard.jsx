@@ -28,7 +28,7 @@ function PostCard({ $id, title, featuredimage }) {
                 <div className="w-full h-[180px] shrink-0 overflow-hidden rounded-xl">
 
                     <img
-                        src={appwriteService.getFilePreview(featuredimage)}
+                        src={appwriteService.getFileView(featuredimage)}
                         alt={title}
                         className="
                             w-full h-full
