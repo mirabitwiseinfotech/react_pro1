@@ -12,7 +12,7 @@ function Card(props){
       <img
         src="https://picsum.photos/301"
         alt=""
-        className="object-cover object-center w-full rounded-t-md h-72 bg-gray-500"
+        className="object-cover object-center w-full rounded-t-md h-72 "
       />
       <div className="flex flex-col justify-between p-6 space-y-8">
         <div className="space-y-2">
@@ -25,7 +25,7 @@ function Card(props){
         </div>
         <button
           type="button"
-          className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-gray-800 text-gray-200"
+          className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md  text-gray-200"
         >
          {props.btntext}
         </button>

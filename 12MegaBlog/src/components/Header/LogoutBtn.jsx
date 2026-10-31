@@ -6,7 +6,7 @@ import {logout} from '../../store/authSlice'
 function LogoutBtn() {
     const dispatch = useDispatch()
     const logoutHandler = () => {
-        authService.LogOutogout().then(() => {
+        authService.LogOut().then(() => {
             dispatch(logout())
         })
     }

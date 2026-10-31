@@ -38,23 +38,29 @@ export class AuthServices{
         
     }
 
-    async Login({email,password}){
-        try {
-            return await this.account.createEmailPasswordSession(email,password);
-        } catch (error) {
-            
-        }
+  async Login({ email, password }) {
+    try {
+        return await this.account.createEmailPasswordSession(
+            email,
+            password
+        );
+    } catch (error) {
+        console.log("Login error:", error);
+        throw error;
     }
+}
 
-  async getCurrentUser() {
-  try {
-    return await this.account.get();
-  } catch (error) {
-    if (error.code === 401) {
-      return null;
+    async getCurrentUser() {
+    try {
+        return await this.account.get();
+    } catch (error) {
+        if (error.code === 401) {
+            return null;
+        }
+
+        console.log("Get current user error:", error);
+        return null;
     }
-    throw error;
-  }
 }
 
     async LogOut(){

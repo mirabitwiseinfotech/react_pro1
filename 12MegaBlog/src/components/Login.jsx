@@ -13,18 +13,22 @@ function Login (){
     const {register, handleSubmit,} = useForm()
     const [error ,setError] = useState ("")
 
-    const login = async(data) => {
-        setError("")
-        try {
-           const session =  await authService.
-           getCurrentUser()
-           if (userData) dispatch(authLogin(userData));
-           navigate("/")
-        } catch (error) {
-            setError(error.message)
-            
+    const login = async (data) => {
+    setError("")
+
+    try {
+        await authService.Login(data)
+
+        const userData = await authService.getCurrentUser()
+
+        if (userData) {
+            dispatch(authLogin({ userData }))
+            navigate("/")
         }
+    } catch (error) {
+        setError(error.message)
     }
+}
     
 
     return(
@@ -38,7 +42,7 @@ function Login (){
                     </span>
         </div>
         <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-base text-white/60">
                     Don&apos;t have any account?&nbsp;
                     <Link
                         to="/signup"
